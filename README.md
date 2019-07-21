@@ -48,6 +48,14 @@ And can directly communicate with the API at:
 
 ```https://localhost:8443/```
 
+If you're running the server in a VM instead of the localhost, you should add the domain/IP to the trusted hosts list inside the *api/.env* file:
+
+```TRUSTED_HOSTS='^localhost|api|myVM.test$'```
+
+Then you can access the website & API using
+
+```https://myVM.test/```
+
 ## Querying backend:
 
 Check ```https://localhost:8443/``` for all API endpoints.
