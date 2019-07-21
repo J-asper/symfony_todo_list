@@ -1,0 +1,21 @@
+App\Entity\Todo\TodoTask:
+  todotask_1:
+    state: '<(App\Entity\Todo\TodoTask::STATE_DONE)>'
+    description: 'Apply for new job'
+    createDate: '<date_create("2019-07-18 08:00:00")>'
+    list: '@todolist_1'
+  todotask_2:
+    state: '<(App\Entity\Todo\TodoTask::STATE_DONE)>'
+    description: 'Have interview'
+    createDate: '<date_create("2019-07-19 15:00:00")>'
+    list: '@todolist_1'
+  todotask_3:
+    state: '<(App\Entity\Todo\TodoTask::STATE_IN_PROGRESS)>'
+    description: 'Develop TODO test'
+    createDate: '<date_create("2019-07-21 19:00:00")>'
+    list: '@todolist_1'
+  todotask_4:
+    state: '<(App\Entity\Todo\TodoTask::STATE_CREATED)>'
+    description: 'Profit?'
+    createDate: '<date_create("2019-07-21 20:00:00")>'
+    list: '@todolist_1'
