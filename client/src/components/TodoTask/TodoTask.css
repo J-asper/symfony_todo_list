@@ -1,0 +1,42 @@
+.todotask{
+    background-color: #FFF;
+    list-style: none;
+    padding: 8px 5px 0 5px;
+}
+
+.todotask--state-created .todotask__description{
+    color: #666;
+}
+
+.todotask--state-inprogress .todotask__description{
+    font-weight: bold;
+}
+
+.todotask--state-done .todotask__description{
+    color: green;
+    text-decoration: line-through;
+}
+
+.todotask:not(:last-of-type){
+    border-bottom: 1px solid #CCC;
+}
+
+.todotask__buttons, .todotask__description{
+    float: left;
+    margin-bottom: 8px;
+}
+
+.todotask button{
+    border: none;
+    background: none;
+    display: inline-block;
+    outline: none;
+}
+
+.todotask__close{
+    float: right;
+}
+
+.todotask__state:not(.todotask__state--active){
+    opacity: 0.5;
+}

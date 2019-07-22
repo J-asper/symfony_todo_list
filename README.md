@@ -6,7 +6,7 @@ This exercise makes use of the API-platform framework as backend:
 
 https://api-platform.com
 
-It's a platform specializing in API requests on top of Symfony 4:
+It's a platform specializing in API requests made on top of Symfony 4:
 
 [API Documentation](./doc/APIPLATFORM.md)
 
@@ -30,8 +30,11 @@ docker-compose pull
 //Create and run containers:
 docker-compose up -d
 
-//Install App Dependencies
+//Install Backend Dependencies:
 docker-compose exec php composer install
+
+//Install Frontend dependencies:
+docker-compose exec client yarn install
 
 //Create database schema:
 docker-compose exec php bin/console doctrine:schema:update --force
@@ -48,13 +51,53 @@ And can directly communicate with the API at:
 
 ```https://localhost:8443/```
 
-If you're running the server in a VM instead of the localhost, you should add the domain/IP to the trusted hosts list inside the *api/.env* file:
+## Accessing App from a VM
 
-```TRUSTED_HOSTS='^localhost|api|myVM.test$'```
+If the App is running inside a VM and you want to access it from the host machine, you need to do the following things:
 
-Then you can access the website & API using
+Assuming you usually access the VM under the domain ```local.test```:
 
-```https://myVM.test/```
+- Make the file ```api/.env.local```
+
+And inside put the following lines:
+
+```
+TRUSTED_HOSTS='^localhost|api|local.test$'
+CORS_ALLOW_ORIGIN=^https?://localhost(:[0-9]+)?|https?://local.test(:[0-9]+)?$
+```
+
+This will tell the API backend to trust requests with local.test as host header and allow CORS requests coming from it.
+
+- In the project root make the file: ```docker-compose.override.yml```
+
+And put the following lines inside:
+
+```
+services:
+  client:
+    environment:
+      - REACT_APP_API_ENTRYPOINT=https://local.test:8443
+```
+
+This will set the entrypoint of the React API calls to the custom domain instead of localhost
+
+If you had already started containers, restart them:
+
+```
+docker-compose down && \
+docker-compose up && \
+docker-compose exec client yarn install
+```
+*(the frontend dependencies aren't in a volume hence you need to run yarn install again when recreating the containers)*
+
+Now you should be able to access the app at:
+
+```https://local.test```
+
+And the API backend at:
+
+```https://local.test:8443```
+
 
 ## Querying backend:
 

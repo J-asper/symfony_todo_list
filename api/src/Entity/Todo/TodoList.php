@@ -19,6 +19,7 @@ class TodoList
     /**
      * @var int The id of this TodoList.
      *
+     * @Groups({"todolist"})
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -28,6 +29,7 @@ class TodoList
     /**
      * @var string The description of the list
      *
+     * @Groups({"todolist"})
      * @ORM\Column(type="text", nullable=false)
      */
     public $description;
@@ -36,6 +38,7 @@ class TodoList
      * @var TodoTask[] All tasks for this list
      *
      * @Groups({"todolist"})
+     * @ORM\OrderBy({"state" = "ASC", "id" = "DESC"})
      * @ORM\OneToMany(targetEntity="TodoTask", mappedBy="list", cascade={"persist", "remove"})
      */
     public $tasks;

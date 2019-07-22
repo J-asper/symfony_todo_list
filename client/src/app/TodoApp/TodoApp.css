@@ -1,0 +1,9 @@
+body {
+    background-color: #242582;
+}
+
+.clearfix::after {
+    display: block;
+    content: "";
+    clear: both;
+}
