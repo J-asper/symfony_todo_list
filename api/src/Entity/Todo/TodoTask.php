@@ -24,7 +24,7 @@ class TodoTask
      *
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @Groups("todolist")
+     * @Groups("todolist_get_item")
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -32,7 +32,7 @@ class TodoTask
     /**
      * @var int the state of the current task
      *
-     * @Groups("todolist")
+     * @Groups("todolist_get_item")
      * @ORM\Column(type="integer", nullable=false)
      */
     public $state;
@@ -40,7 +40,7 @@ class TodoTask
     /**
      * @var string The description of the task
      *
-     * @Groups("todolist")
+     * @Groups("todolist_get_item")
      * @ORM\Column(type="text", nullable=false)
      */
     public $description;
@@ -48,7 +48,7 @@ class TodoTask
     /**
      * @var \DateTimeInterface Creation date of the task
      *
-     * @Groups("todolist")
+     * @Groups("todolist_get_item")
      * @ORM\Column(type="datetime")
      */
     public $createDate;
