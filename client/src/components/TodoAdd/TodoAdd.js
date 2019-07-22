@@ -25,8 +25,8 @@ export class TodoAdd extends React.Component {
     render() {
         return (
             <form className={bemClass}>
-                <input type="text" value={this.state.description} onChange={this.handleChange.bind(this)} />
-                <button onClick={this.onClick}>Add</button>
+                <input type="text" value={this.state.description} onChange={this.handleChange.bind(this)} autoFocus />
+                <button onClick={this.onClick}>Add Task</button>
             </form>
         );
     }

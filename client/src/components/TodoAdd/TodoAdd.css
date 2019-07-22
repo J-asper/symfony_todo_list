@@ -1,7 +1,13 @@
+.todoadd{
+    position: relative;
+}
+
 .todoadd input{
     padding: 8px 5px;
 }
 
 .todoadd button{
+    position: absolute;
+    right: 0;
     padding: 8px 0;
 }

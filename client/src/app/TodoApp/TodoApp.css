@@ -2,8 +2,47 @@ body {
     background-color: #242582;
 }
 
+.todoapp{
+    margin: 30px 10px 0 10px;
+}
+
+@media only screen and (min-width: 800px)  {
+    .todoapp{
+        width: 600px;
+        margin: 30px auto 0 auto;
+    }
+}
+
 .clearfix::after {
     display: block;
     content: "";
     clear: both;
+}
+
+h1, h2, h3, p {
+    color: #FFF;
+}
+
+h2, .h2 {
+    font-size: 1.3rem;
+}
+
+.todoapp__picker{
+    margin-top: 30px;
+}
+
+.todolist {
+    border: 1px solid #f64c72;
+    border-radius: 4px;
+    padding: 20px 10px;
+}
+
+.todopicker__addlist input, .todolist .todoadd input {
+    width: 100%;
+}
+
+.todolist .todoadd button, .todopicker__addlist button,  .todopicker__chooselist button  {
+    width: 60px;
+    font-size: 12px;
+    line-height: 25px;
 }

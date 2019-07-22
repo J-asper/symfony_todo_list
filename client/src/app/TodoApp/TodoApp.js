@@ -1,16 +1,22 @@
 import React from 'react';
 import "./TodoApp.css";
 import {TodoList} from "../../components/TodoList/TodoList";
-import {TodoTask} from "../../components/TodoTask/TodoTask";
-import {addTask, getList, removeTask, updateTask} from "../../api/Todo/TodoApi";
+import {TodoPicker} from "../../components/TodoPicker/TodoPicker";
+import {addTask, getList, removeTask, updateTask, getListCollection, addList, removeList} from "../../api/Todo/TodoApi";
 
 const defaultAppState = {
-    list: {
-        "@context": "/contexts/TodoList",
-        "@id": "/todo_lists/1",
-        "@type": "TodoList",
+    //the list that is currently selected in the dropdown
+    pickedListId: TodoPicker.newListId,
+    //the list that is currently active.
+    activeList: {
         "description": null,
+        "id": '',
         "tasks": []
+    },
+    //a collection of all the lists available in the backend.
+    listCollection: {
+        "hydra:member": [],
+        "hydra:totalItems": 0
     }
 };
 
@@ -21,31 +27,86 @@ class TodoApp extends React.Component {
         this.removeTask = this.removeTask.bind(this);
         this.updateTaskState = this.updateTaskState.bind(this);
         this.addTask = this.addTask.bind(this);
+        this.chooseList = this.chooseList.bind(this);
+        this.addList = this.addList.bind(this);
+        this.removeList = this.removeList.bind(this);
+        this.loadListCollectionAndChooseList = this.loadListCollectionAndChooseList.bind(this);
     }
 
     componentDidMount() {
-        this.loadList(1);
+        this.loadListCollectionAndChooseList();
     }
 
-    loadList(id) {
-        getList(id)
+    addList(description){
+        const newList = {
+            "description": description,
+        };
+
+        return addList({
+            description: description
+        })
+            .then((result) => result.json())
+            .then((list) => {
+                this.chooseList(list.id);
+                this.loadListCollection();
+            })
+    }
+
+    chooseList(id) {
+        if (id === TodoPicker.newListId) {
+            this.setState({pickedListId: id});
+        } else {
+            return getList(id)
+                .then((result) => result.json())
+                .then((list) => this.setState({
+                    activeList: list,
+                    pickedListId: list.id,
+                }))
+                ;
+        }
+    }
+
+    removeList(id){
+        return removeList(id).then(() => {
+            this.loadListCollectionAndChooseList();
+        });
+    }
+
+    loadListCollection() {
+        return getListCollection()
             .then((result) => result.json())
             .then((list) => this.setState({
-                list: list
+                listCollection: list
             }))
-        ;
+            ;
+    }
+
+    loadListCollectionAndChooseList(){
+        return this.loadListCollection().then(() => {
+            if (this.state.listCollection["hydra:totalItems"] > 0){
+                const lists = this.state.listCollection["hydra:member"];
+                this.chooseList(lists[lists.length - 1].id);
+            }else{
+                this.setState({
+                    pickedListId: TodoPicker.newListId,
+                    activeList: {
+                        "description": null,
+                        "id": '',
+                        "tasks": []
+                    },
+                });
+            }
+        });
     }
 
     addTask(description) {
         const newTask = {
-            "state": TodoTask.state.CREATED,
             "description": description,
-            "createDate": new Date()
         };
 
-        this.state.list.tasks.unshift(newTask);
+        this.state.activeList.tasks.unshift(newTask);
 
-        addTask(this.state.list.id, {
+        return addTask(this.state.activeList.id, {
             description: description
         })
             .then((result) => result.json())
@@ -56,29 +117,40 @@ class TodoApp extends React.Component {
     }
 
     removeTask(itemIndex) {
-        const removedTask = this.state.list.tasks.splice(itemIndex, 1);
+        const removedTask = this.state.activeList.tasks.splice(itemIndex, 1);
         this.setState(this.state);
-        if (removedTask) removeTask(removedTask[0].id);
+        return removeTask(removedTask[0].id);
     }
 
     updateTaskState(newState, itemIndex) {
-        if (this.state.list.tasks[itemIndex].state === newState) return;
+        if (this.state.activeList.tasks[itemIndex].state === newState) return;
 
-        this.state.list.tasks[itemIndex].state = newState;
-        this.setState(this.state);
-        updateTask(this.state.list.tasks[itemIndex].id, {
+        updateTask(this.state.activeList.tasks[itemIndex].id, {
             state: newState
-        }).then(() => this.loadList(this.state.list.id));
+        }).then(() => this.chooseList(this.state.activeList.id));
     }
 
     render() {
         return (
-            <div id="todoapp">
-                <TodoList tasks={this.state.list.tasks}
-                          removeTask={this.removeTask}
-                          updateTaskState={this.updateTaskState}
-                          addTask={this.addTask}
-                />
+            <div id="todoapp" className="todoapp">
+                <div className="todoapp__list">
+                    <TodoList tasks={this.state.activeList.tasks}
+                              removeTask={this.removeTask}
+                              updateTaskState={this.updateTaskState}
+                              addTask={this.addTask}
+                              description={this.state.activeList.description}
+                    />
+                </div>
+                <div className="todoapp__picker">
+                    <h2>Choose List:</h2>
+                    <TodoPicker
+                        listCollection={this.state.listCollection}
+                        chooseList={this.chooseList}
+                        addList={this.addList}
+                        removeList={this.removeList}
+                        pickedListId={this.state.pickedListId}
+                    />
+                </div>
             </div>
         );
     }

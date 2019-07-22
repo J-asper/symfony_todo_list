@@ -1,0 +1,35 @@
+.todopicker__chooselist, .todopicker__addlist form{
+    position: relative;
+}
+
+.todopicker__chooselist{
+    margin-bottom: 1rem;
+}
+
+.todopicker__chooselist select{
+    padding: 8px 5px;
+    width: 100%;
+}
+
+.todopicker__chooselist, .todopicker__chooselist select{
+    height: 44px;
+}
+
+.todopicker__addlist input {
+    padding: 8px 5px;
+}
+
+.todopicker button {
+    padding: 8px 0;
+    position: absolute;
+    right: 0;
+}
+
+.todopicker__chooselist, .todopicker__addlist form{
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.todopicker__chooselist option:last-of-type{
+    font-weight: bold;
+}

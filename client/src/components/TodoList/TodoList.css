@@ -1,18 +1,5 @@
-.todolist {
-    width: 600px;
-    margin: 30px auto 0 auto;
-}
-
 .todolist ul, .todolist .todoadd{
     border-radius: 5px;
     overflow: hidden;
     padding: 0;
-}
-
-.todolist .todoadd input {
-    width: 550px;
-}
-
-.todolist .todoadd button {
-    width: 50px;
 }

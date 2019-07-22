@@ -21,14 +21,17 @@ export class TodoList extends React.Component {
 
         return (
             <div className={bemClass}>
+                <h2>{this.props.description ? this.props.description : '<No List Created>'}</h2>
                 <ul>
                     <FlipMove>
                         {tasks}
                     </FlipMove>
                 </ul>
-                <TodoAdd
-                    addTask={this.props.addTask}
-                />
+                {this.props.description &&
+                    <TodoAdd
+                        addTask={this.props.addTask}
+                    />
+                }
             </div>
         );
     }

@@ -8,21 +8,26 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * A Todo List consisting of tasks.
+ * A Todo List consisting of Todo tasks.
  *
  * @ORM\Entity
  * @ApiResource(
  *     itemOperations={
+ *          "delete"=null,
  *          "get"={"normalization_context"={"groups"={"todolist_get_item"}}}
+ *     },
+ *     collectionOperations={
+ *          "post"=null,
+ *          "get"={"normalization_context"={"groups"={"todolist_get_collection"}}}
  *     }
- * )
+ *  )
  */
 class TodoList
 {
     /**
      * @var int The id of this TodoList.
      *
-     * @Groups({"todolist_get_item"})
+     * @Groups({"todolist_get_item", "todolist_get_collection"})
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -32,7 +37,7 @@ class TodoList
     /**
      * @var string The description of the list
      *
-     * @Groups({"todolist_get_item"})
+     * @Groups({"todolist_get_item", "todolist_get_collection"})
      * @ORM\Column(type="text", nullable=false)
      */
     public $description;

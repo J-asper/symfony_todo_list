@@ -10,6 +10,16 @@ export function getList(listId, options){
     return fetch(resource.TODO_LISTS + `/${listId}`, options || {})
 }
 
+export function getListCollection(options){
+    return fetch(resource.TODO_LISTS, options || {})
+}
+
+export function removeList(listId, options){
+    return fetch(resource.TODO_LISTS + `/${listId}`, Object.assign({
+        method: 'DELETE'
+    }, options || {}))
+}
+
 export function addTask(listId, data, options){
     data = Object.assign({
         description : 'New Task',
@@ -18,6 +28,17 @@ export function addTask(listId, data, options){
     }, data || {});
 
     return fetch(resource.TODO_TASKS, Object.assign({
+        method: 'POST',
+        body: JSON.stringify(data)
+    }, options || {}))
+}
+
+export function addList(data, options){
+    data = Object.assign({
+        description : 'New List',
+    }, data || {});
+
+    return fetch(resource.TODO_LISTS, Object.assign({
         method: 'POST',
         body: JSON.stringify(data)
     }, options || {}))

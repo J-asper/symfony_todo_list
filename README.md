@@ -1,4 +1,4 @@
-# Todo list
+# Todo list based on API platform
 
 ## Backend:
 
@@ -51,7 +51,7 @@ And can directly communicate with the API at:
 
 ```https://localhost:8443/```
 
-## Accessing App from a VM
+## Accessing App from a VM / Remote Server
 
 If the App is running inside a VM and you want to access it from the host machine, you need to do the following things:
 
