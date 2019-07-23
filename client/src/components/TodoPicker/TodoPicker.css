@@ -9,6 +9,7 @@
 .todopicker__chooselist select{
     padding: 8px 5px;
     width: 100%;
+    border: none;
 }
 
 .todopicker__chooselist, .todopicker__chooselist select{
@@ -17,6 +18,7 @@
 
 .todopicker__addlist input {
     padding: 8px 5px;
+    border: none;
 }
 
 .todopicker button {

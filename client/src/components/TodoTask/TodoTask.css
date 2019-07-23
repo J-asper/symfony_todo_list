@@ -48,12 +48,14 @@
 
 .todotask .icon-radio-unchecked{
     color: #dc3545;
+    padding-left: 7px;
 }
 
 .todotask .icon-spinner6{
-    color: #f1da2c;
+    color: #2f2fae;
 }
 
 .todotask .icon-checkmark{
     color: green;
+    padding-left: 2px;
 }

@@ -32,7 +32,7 @@ h2, .h2 {
 }
 
 .todolist {
-    border: 1px solid #f64c72;
+    border: 1px solid #553d67;
     border-radius: 4px;
     padding: 20px 10px;
 }
@@ -44,5 +44,14 @@ h2, .h2 {
 .todolist .todoadd button, .todopicker__addlist button,  .todopicker__chooselist button  {
     width: 60px;
     font-size: 12px;
+    background: #ffc5c5;
+    border: none;
+}
+
+.todopicker__chooselist button  {
+    line-height: 28px;
+}
+
+.todolist .todoadd button, .todopicker__addlist button {
     line-height: 25px;
 }

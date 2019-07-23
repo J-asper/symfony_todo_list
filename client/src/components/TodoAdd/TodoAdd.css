@@ -4,6 +4,7 @@
 
 .todoadd input{
     padding: 8px 5px;
+    border: none;
 }
 
 .todoadd button{
