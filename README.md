@@ -40,7 +40,7 @@ docker-compose exec client yarn install
 docker-compose exec php bin/console doctrine:schema:update --force
 
 //Load fixtures:
-docker-compose exec php bin/console hautelook:fixtures:load -v
+docker-compose exec php bin/console hautelook:fixtures:load -q
 ```
 
 You should now be able to access the web app at:
