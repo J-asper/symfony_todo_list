@@ -1,7 +1,7 @@
 .todotask{
     background-color: #FFF;
     list-style: none;
-    padding: 8px 5px 0 5px;
+    padding: 12px 5px 0 5px;
 }
 
 .todotask__description{
@@ -27,7 +27,7 @@
 
 .todotask__buttons, .todotask__description{
     float: left;
-    margin-bottom: 8px;
+    margin-bottom: 11px;
 }
 
 .todotask button{
@@ -40,6 +40,7 @@
 
 .todotask__close{
     float: right;
+    font-size: 18px;
 }
 
 .todotask__state:not(.todotask__state--active) .icon{

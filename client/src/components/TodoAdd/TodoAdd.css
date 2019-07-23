@@ -3,12 +3,17 @@
 }
 
 .todoadd input{
-    padding: 8px 5px;
+    padding: 10px 5px;
     border: none;
 }
 
 .todoadd button{
     position: absolute;
     right: 0;
+    top: 0;
     padding: 8px 0;
+}
+
+.todoadd button{
+    line-height: 19px;
 }

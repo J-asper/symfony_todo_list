@@ -21,7 +21,7 @@ export class TodoList extends React.Component {
 
         return (
             <div className={bemClass}>
-                <h2>{this.props.description ? this.props.description : '<No List Created>'}</h2>
+                <h2>{this.props.description ? `List : ${this.props.description}` : '<No List Created>'}</h2>
                 <ul>
                     <FlipMove>
                         {tasks}

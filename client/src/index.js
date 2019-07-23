@@ -5,19 +5,18 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { reducer as form } from 'redux-form';
 import { Route, Switch } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
 import {
   ConnectedRouter,
   connectRouter,
   routerMiddleware
 } from 'connected-react-router';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome/css/font-awesome.css';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'font-awesome/css/font-awesome.css';
 import * as serviceWorker from './serviceWorker';
 // Import your reducers and routes here
 import TodoApp from './app/TodoApp/TodoApp';
 
-const history = createBrowserHistory();
+const history = require('history').createBrowserHistory();
 const store = createStore(
   combineReducers({
     router: connectRouter(history),
@@ -32,7 +31,6 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
           <Route path="/" component={TodoApp} strict={true} exact={true}/>
-          {/*<Route path="/" component={Welcome} strict={true} exact={true}/>*/}
         {/* Add your routes here */}
         <Route render={() => <h1>Not Found</h1>} />
       </Switch>

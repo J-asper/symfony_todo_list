@@ -38,10 +38,6 @@ class TodoApp extends React.Component {
     }
 
     addList(description){
-        const newList = {
-            "description": description,
-        };
-
         return addList({
             description: description
         })

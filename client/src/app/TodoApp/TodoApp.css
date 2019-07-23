@@ -1,5 +1,6 @@
 body {
     background-color: #242582;
+    font-family: Calibri, Arial, sans-serif;
 }
 
 .todoapp{
@@ -48,10 +49,8 @@ h2, .h2 {
     border: none;
 }
 
-.todopicker__chooselist button  {
-    line-height: 28px;
-}
 
-.todolist .todoadd button, .todopicker__addlist button {
-    line-height: 25px;
+button{
+    outline: none;
+    cursor: pointer;
 }

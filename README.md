@@ -98,6 +98,23 @@ And the API backend at:
 
 ```https://local.test:8443```
 
+## Accessing App over HTTP instead of HTTPS
+
+Because this is just a quick test app, it doesn't include a valid SSL certificate. That's why there will be a warning from the browser stating that the connection is unsafe when opening the website. I usually just ignore the warning and continue, but for some older browsers that might not be enough to get it to work.
+To make the api make regular HTTP calls instead of HTTPS, make the file: ```docker-compose.override.yml```
+
+And put the following lines inside:
+
+```
+services:
+  client:
+    environment:
+      - REACT_APP_API_ENTRYPOINT=http://localhost:8080
+```
+
+This will make the app make calls to port 8080 which is a regular HTTP port of the api back-end.
+
+Afterwards you should be able to visit  http:localhost, and everything should work normally.
 
 ## Querying backend:
 

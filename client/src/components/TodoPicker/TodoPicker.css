@@ -7,7 +7,7 @@
 }
 
 .todopicker__chooselist select{
-    padding: 8px 5px;
+    padding: 10px 5px;
     width: 100%;
     border: none;
 }
@@ -17,7 +17,7 @@
 }
 
 .todopicker__addlist input {
-    padding: 8px 5px;
+    padding: 10px 5px;
     border: none;
 }
 
@@ -25,6 +25,7 @@
     padding: 8px 0;
     position: absolute;
     right: 0;
+    top: 0;
 }
 
 .todopicker__chooselist, .todopicker__addlist form{
@@ -34,4 +35,12 @@
 
 .todopicker__chooselist option:last-of-type{
     font-weight: bold;
+}
+
+.todopicker__addlist button {
+    line-height: 19px;
+}
+
+.todopicker__chooselist button  {
+    line-height: 28px;
 }

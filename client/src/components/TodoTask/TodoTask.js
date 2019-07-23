@@ -53,10 +53,6 @@ function makeBemClass(state){
     return `${bemClass} ${bemClass}--state-${TodoTask.stateClassNames[state]}`;
 }
 
-function makeStateIconClass(state){
-    return (state === TodoTask.state.CREATED ? 'glyphicon-ok' : (state === TodoTask.state.IN_PROGRESS ? 'glyphicon-ok' : 'glyphicon-ok'));
-}
-
 function makeStateButtonClass(state, activeState){
     let buttonClass = `${bemClass}__state`;
     if (state === activeState) buttonClass += ` ${buttonClass}--active`;
