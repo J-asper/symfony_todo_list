@@ -1,5 +1,6 @@
 import React from 'react';
 import "./TodoTask.css";
+import "../../font/icomoon/style.css";
 
 const bemClass = 'todotask';
 
@@ -19,14 +20,13 @@ export class TodoTask extends React.Component {
     }
 
     render() {
-        const state = this.props.item.state;
-
+        const state = this.props.item.state ? this.props.item.state : TodoTask.state.CREATED;
         return (
             <li className={`${makeBemClass(state)} clearfix`}>
                 <div className={`${bemClass}__buttons`}>
-                    <button type="button" className={makeStateButtonClass(TodoTask.state.CREATED, state)} onClick={() => this.onStateClick(TodoTask.state.CREATED)}>Created</button>
-                    <button type="button" className={makeStateButtonClass(TodoTask.state.IN_PROGRESS, state)} onClick={() => this.onStateClick(TodoTask.state.IN_PROGRESS)}>In Progress</button>
-                    <button type="button" className={makeStateButtonClass(TodoTask.state.DONE, state)} onClick={() => this.onStateClick(TodoTask.state.DONE)}>Done</button>
+                    <button type="button" title="Pending" className={makeStateButtonClass(TodoTask.state.CREATED, state)} onClick={() => this.onStateClick(TodoTask.state.CREATED)}><span className="icon icon-radio-unchecked" aria-hidden="true"></span></button>
+                    <button type="button" title="In Progress" className={makeStateButtonClass(TodoTask.state.IN_PROGRESS, state)} onClick={() => this.onStateClick(TodoTask.state.IN_PROGRESS)}><span className="icon icon-spinner6" aria-hidden="true"></span></button>
+                    <button type="button" title="Done" className={makeStateButtonClass(TodoTask.state.DONE, state)} onClick={() => this.onStateClick(TodoTask.state.DONE)}><span className="icon icon-checkmark" aria-hidden="true"></span></button>
                 </div>
                 <div className={`${bemClass}__description`}>
                     {this.props.item.description}

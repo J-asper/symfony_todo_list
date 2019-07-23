@@ -39,7 +39,7 @@ docker-compose exec client yarn install
 //Create database schema:
 docker-compose exec php bin/console doctrine:schema:update --force
 
-//Create fixtures:
+//Load fixtures:
 docker-compose exec php bin/console hautelook:fixtures:load -v
 ```
 

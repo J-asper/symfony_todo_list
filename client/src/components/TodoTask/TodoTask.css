@@ -4,6 +4,10 @@
     padding: 8px 5px 0 5px;
 }
 
+.todotask__description{
+    padding-left: 10px;
+}
+
 .todotask--state-created .todotask__description{
     color: #666;
 }
@@ -31,12 +35,25 @@
     background: none;
     display: inline-block;
     outline: none;
+    padding: 0 6px 0 0;
 }
 
 .todotask__close{
     float: right;
 }
 
-.todotask__state:not(.todotask__state--active){
-    opacity: 0.5;
+.todotask__state:not(.todotask__state--active) .icon{
+    color: #ccc;
+}
+
+.todotask .icon-radio-unchecked{
+    color: #dc3545;
+}
+
+.todotask .icon-spinner6{
+    color: #f1da2c;
+}
+
+.todotask .icon-checkmark{
+    color: green;
 }
