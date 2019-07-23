@@ -22,7 +22,7 @@ export class TodoTask extends React.Component {
     render() {
         const state = this.props.item.state ? this.props.item.state : TodoTask.state.CREATED;
         return (
-            <li className={`${makeBemClass(state)} clearfix`}>
+            <li className={makeTodoTaskClasses(state)}>
                 <div className={`${bemClass}__buttons`}>
                     <button type="button" title="Pending" className={makeStateButtonClass(TodoTask.state.CREATED, state)} onClick={() => this.onStateClick(TodoTask.state.CREATED)}><span className="icon icon-radio-unchecked" aria-hidden="true"></span></button>
                     <button type="button" title="In Progress" className={makeStateButtonClass(TodoTask.state.IN_PROGRESS, state)} onClick={() => this.onStateClick(TodoTask.state.IN_PROGRESS)}><span className="icon icon-spinner6" aria-hidden="true"></span></button>
@@ -49,8 +49,8 @@ TodoTask.stateClassNames = {
     [TodoTask.state.DONE] : 'done',
 };
 
-function makeBemClass(state){
-    return `${bemClass} ${bemClass}--state-${TodoTask.stateClassNames[state]}`;
+function makeTodoTaskClasses(state){
+    return `${bemClass} ${bemClass}--state-${TodoTask.stateClassNames[state]} clearfix`;
 }
 
 function makeStateButtonClass(state, activeState){

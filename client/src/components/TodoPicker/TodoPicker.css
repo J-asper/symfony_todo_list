@@ -13,7 +13,7 @@
 }
 
 .todopicker__chooselist, .todopicker__chooselist select{
-    height: 44px;
+    height: 35px;
 }
 
 .todopicker__addlist input {
@@ -37,10 +37,6 @@
     font-weight: bold;
 }
 
-.todopicker__addlist button {
+.todopicker__addlist button, .todopicker__chooselist button {
     line-height: 19px;
-}
-
-.todopicker__chooselist button  {
-    line-height: 28px;
 }

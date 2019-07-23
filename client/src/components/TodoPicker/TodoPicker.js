@@ -29,7 +29,6 @@ export class TodoPicker extends React.Component {
         evt.preventDefault();
         if (!this.state.newList) return;
 
-        evt.preventDefault();
         if (this.props.addList) this.props.addList(this.state.newList);
         this.setState({newList : ''});
     }

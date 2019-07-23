@@ -1,7 +1,6 @@
 import React from 'react';
 import {TodoTask} from "../TodoTask/TodoTask";
 import {TodoAdd} from "../TodoAdd/TodoAdd";
-
 import "./TodoList.css";
 import FlipMove from 'react-flip-move';
 

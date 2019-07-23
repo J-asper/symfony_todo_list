@@ -3,3 +3,7 @@
     overflow: hidden;
     padding: 0;
 }
+
+.todolist h2{
+    margin-top: 0;
+}
