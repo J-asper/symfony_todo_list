@@ -112,6 +112,14 @@ services:
       - REACT_APP_API_ENTRYPOINT=http://localhost:8080
 ```
 
+If you had already started containers, restart them:
+
+```
+docker-compose down && \
+docker-compose up && \
+docker-compose exec client yarn install
+```
+
 This will make the app make calls to port 8080 which is a regular HTTP port of the api back-end.
 
 Afterwards you should be able to visit  http:localhost, and everything should work normally.
