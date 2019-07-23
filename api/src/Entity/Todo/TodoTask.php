@@ -5,6 +5,7 @@ namespace App\Entity\Todo;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A single TODO task.
@@ -42,6 +43,8 @@ class TodoTask
      *
      * @Groups("todolist_get_item")
      * @ORM\Column(type="text", nullable=false)
+     *
+     * @Assert\NotBlank
      */
     public $description;
 
@@ -57,6 +60,8 @@ class TodoTask
      * @var TodoList The list to which this task belongs
      *
      * @ORM\ManyToOne(targetEntity="TodoList", inversedBy="tasks")
+     *
+     * @Assert\NotBlank
      */
     public $list;
 

@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * A Todo List consisting of Todo tasks.
@@ -39,6 +41,8 @@ class TodoList
      *
      * @Groups({"todolist_get_item", "todolist_get_collection"})
      * @ORM\Column(type="text", nullable=false)
+     *
+     * @Assert\NotBlank
      */
     public $description;
 
