@@ -6,7 +6,7 @@ This exercise makes use of the API-platform framework as backend:
 
 https://api-platform.com
 
-It's a platform specializing in API requests made on top of Symfony 4:
+It's a platform specializing in API requests made on top of Symfony 4.3:
 
 [API Documentation](./doc/APIPLATFORM.md)
 
@@ -116,7 +116,7 @@ This will make the app make calls to port 8080 which is a regular HTTP port of t
 
 Afterwards you should be able to visit  http:localhost, and everything should work normally.
 
-## Querying backend:
+## Querying backend
 
 Check ```https://localhost:8443/``` for all API endpoints.
 
@@ -128,4 +128,13 @@ Will retrieve Todo List with ID 1:
 curl -kX GET "https://localhost:8443/todo_lists/1" -H "accept: application/ld+json"
 ```
 
+## Running Tests
 
+Run the following command to start the PHPunit tests:
+
+```
+docker-compose exec php bin/phpunit
+```
+
+There are no unit tests as there was no custom code needed (besides the entities/api models) to make the API backend. But I wrote functional tests for both the TodoList and TodoTask API endpoints.
+You can find them under ```api/tests```
