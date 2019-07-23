@@ -43,7 +43,7 @@ docker-compose exec php bin/console doctrine:schema:update --force
 docker-compose exec php bin/console hautelook:fixtures:load -q
 ```
 
-You should now be able to access the web app at:
+You should now be able to access the web app at: (https required, if you want to use http see below)
 
 ```https://localhost/```
 
