@@ -55,18 +55,18 @@ And can directly communicate with the API at:
 
 If the App is running inside a VM and you want to access it from the host machine, you need to do the following things:
 
-Assuming you usually access the VM under the domain ```local.test```:
+Assuming you usually access the VM under the domain ```myVM.test```:
 
 - Make the file ```api/.env.local```
 
 And inside put the following lines:
 
 ```
-TRUSTED_HOSTS='^localhost|api|local.test$'
-CORS_ALLOW_ORIGIN=^https?://localhost(:[0-9]+)?|https?://local.test(:[0-9]+)?$
+TRUSTED_HOSTS='^localhost|api|myVM.test$'
+CORS_ALLOW_ORIGIN=^https?://localhost(:[0-9]+)?|https?://myVM.test(:[0-9]+)?$
 ```
 
-This will tell the API backend to trust requests with local.test as host header and allow CORS requests coming from it.
+This will tell the API backend to trust requests with myVM.test as host header and allow CORS requests coming from it.
 
 - In the project root make the file: ```docker-compose.override.yml```
 
@@ -76,7 +76,7 @@ And put the following lines inside:
 services:
   client:
     environment:
-      - REACT_APP_API_ENTRYPOINT=https://local.test:8443
+      - REACT_APP_API_ENTRYPOINT=https://myVM.test:8443
 ```
 
 This will set the entrypoint of the React API calls to the custom domain instead of localhost
@@ -92,11 +92,11 @@ docker-compose exec client yarn install
 
 Now you should be able to access the app at:
 
-```https://local.test```
+```https://myVM.test```
 
 And the API backend at:
 
-```https://local.test:8443```
+```https://myVM.test:8443```
 
 ## Accessing App over HTTP instead of HTTPS
 
