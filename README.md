@@ -122,7 +122,7 @@ docker-compose exec client yarn install
 
 This will make the app make calls to port 8080 which is a regular HTTP port of the api back-end.
 
-Afterwards you should be able to visit  http:localhost, and everything should work normally.
+Afterwards you should be able to visit  http://localhost, and everything should work normally.
 
 ## Querying backend
 
